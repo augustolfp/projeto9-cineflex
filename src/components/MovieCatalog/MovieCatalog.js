@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import styled from "styled-components";
+import MoviePoster from "../MoviePoster/MoviePoster";
 
 export default function MovieCatalog() {
     const [catalog, setCatalog] = React.useState([]);
@@ -14,11 +15,14 @@ export default function MovieCatalog() {
     }, []);
     return (
         <Container>
-            {catalog.map((obj,index) => <div key={index}>{obj.title}</div>)}
+            {catalog.map((obj,index) => <MoviePoster key={index} image={obj.posterURL}/>)}
         </Container>
     ); 
 }
 
 const Container = styled.div`
-    color: #000000;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 `
+
