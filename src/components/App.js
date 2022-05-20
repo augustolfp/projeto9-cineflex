@@ -1,7 +1,11 @@
 import React from "react";
+import MovieCatalog from "./MovieCatalog/MovieCatalog";
 
 export default function App() {
     return(
-        <div>Opaaaaa</div>
+        <>
+            <MovieCatalog />
+            <div>Opaaaaa</div>
+        </>
     );
 }
