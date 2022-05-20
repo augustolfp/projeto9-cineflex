@@ -1,10 +1,13 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export default function MoviePoster(props) {
     return(
-        <Poster>
-            <img src={props.image} />
-        </Poster>
+        <Link to={`/sessoes/${props.id}`}>
+            <Poster>
+                <img src={props.image} />
+            </Poster>
+        </Link>
     );
 }
 

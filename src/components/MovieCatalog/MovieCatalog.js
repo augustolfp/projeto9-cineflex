@@ -15,7 +15,7 @@ export default function MovieCatalog() {
     }, []);
     return (
         <Container>
-            {catalog.map((obj,index) => <MoviePoster key={index} image={obj.posterURL}/>)}
+            {catalog.map((obj,index) => <MoviePoster key={index} id={obj.id} image={obj.posterURL}/>)}
         </Container>
     ); 
 }
