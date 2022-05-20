@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import React from "react";
 import axios from "axios";
+import Footer from "../Footer/Footer";
 
 export default function MovieSessions() {
     const [sessions, setSessions] = React.useState({});
@@ -13,9 +14,14 @@ export default function MovieSessions() {
     },[]);
     
     return(
-        <div>
-            {sessions.title}     
-            {sessions.overview}
-        </div>
+        <>
+            <div>
+                {sessions.title}     
+                {sessions.overview}
+            </div>
+            <Footer image={sessions.posterURL}>
+                {sessions.title}
+            </Footer>
+        </>
     );
 }
