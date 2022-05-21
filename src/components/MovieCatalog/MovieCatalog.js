@@ -14,15 +14,28 @@ export default function MovieCatalog() {
 
     }, []);
     return (
-        <Container>
-            {catalog.map((obj,index) => <MoviePoster key={index} id={obj.id} image={obj.posterURL}/>)}
-        </Container>
+        <>
+            <Title>
+                Selecione o filme
+            </Title>
+            <MoviesContainer>
+                {catalog.map((obj,index) => <MoviePoster key={index} id={obj.id} image={obj.posterURL}/>)}
+            </MoviesContainer>
+        </>
     ); 
 }
 
-const Container = styled.div`
+const MoviesContainer = styled.div`
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+`
+
+const Title = styled.h2`
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    color: #293845;
+    text-align: center;
+    margin: 30px 10px;
 `
 
