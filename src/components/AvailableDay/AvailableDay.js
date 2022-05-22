@@ -3,7 +3,6 @@ import styled from "styled-components";
 export default function AvailableDay({day}) {
 
     if(day) {
-        console.log(day);
         return(
             <>
                 <Date>
