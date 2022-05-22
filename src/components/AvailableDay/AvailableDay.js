@@ -10,7 +10,7 @@ export default function AvailableDay({day}) {
                     {`${day.weekday} - ${day.date}`}
                 </Date>
                 <ButtonContainer>
-                    {day.showtimes.map((session,index) => <UserButton key={index} >{session.name}</UserButton>)}
+                    {day.showtimes.map((session,index) => <UserButton id={session.id} key={index} >{session.name}</UserButton>)}
                 </ButtonContainer>
             </>
         );

@@ -1,8 +1,11 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export default function UserButton(props) {
     return(
-        <Container type="button">{props.children}</Container>
+        <Link to={`/assentos/${props.id}`}>
+            <Container type="button">{props.children}</Container>
+        </Link>
     );
 }
 
