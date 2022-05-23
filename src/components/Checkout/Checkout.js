@@ -7,9 +7,13 @@ export default function Checkout() {
     return (
         <Container>
             <SucessMsg>Pedido feito com sucesso!</SucessMsg>
-            <Info>Filme e sessão</Info>
-            <Info>Ingressos</Info>
-            <Info>Comprador</Info>
+            <InfoHeader>Filme e sessão</InfoHeader>
+            <Info>{location.state.movie.title}</Info>
+            <Info>{location.state.day.date} {location.state.name}</Info>
+            <InfoHeader>Ingressos</InfoHeader>
+            <InfoHeader>Comprador</InfoHeader>
+            <Info>Nome: {location.state.userName}</Info>
+            <Info>CPF: {location.state.cpf}</Info>
         </Container>
     );
 }
@@ -26,7 +30,7 @@ const SucessMsg = styled.div`
 
 `
 
-const Info = styled.div`
+const InfoHeader = styled.div`
     font-family: 'Roboto', sans-serif;
     font-weight: 700;
     font-size: 24px;
@@ -36,4 +40,10 @@ const Info = styled.div`
 const Container = styled.div`
     width: 100%;
     margin: 0 30px;
+`
+
+const Info = styled.div`
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    color: #293845;
 `

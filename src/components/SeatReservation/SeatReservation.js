@@ -27,7 +27,7 @@ export default function SeatReservation(props) {
             cpf: CPF
         }
         const reserveRequest = axios.post('https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many', reservation);
-        reserveRequest.then(navigate('/sucesso',{state: {...reservation,...seats.movie}}));
+        reserveRequest.then(navigate('/sucesso',{state: {...reservation,...seats, userName: reservation.name}}));
         reserveRequest.catch(error => console.log("Erro" + error.response.status));
         
     }
