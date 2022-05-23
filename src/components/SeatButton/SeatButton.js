@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export default function SeatButton({id, name, isAvailable}) {
+export default function SeatButton({id, name, isAvailable, click}) {
     return(
-        <Seat color={isAvailable? "#C3CFD9" : "#FBE192"} >{name}</Seat>
+        <Seat onClick={click} color={isAvailable? "#C3CFD9" : "#FBE192"} >{name}</Seat>
     );
 }
 
