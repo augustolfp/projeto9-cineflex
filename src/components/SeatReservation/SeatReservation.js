@@ -35,10 +35,10 @@ export default function SeatReservation(props) {
     function handleSeatClick(index) {
         if(seats.seats[index].isAvailable) {
             if(typeof seats.seats[index].isSelected === "undefined") {
-                setSeats(seats, seats.seats[index].isSelected = true);
+                setSeats({...seats}, seats.seats[index].isSelected = true);
             }
             else {
-                setSeats(seats, seats.seats[index].isSelected = !seats.seats[index].isSelected);
+                setSeats({...seats}, seats.seats[index].isSelected = !seats.seats[index].isSelected);
             }
         }
     }
