@@ -4,6 +4,8 @@ export default function Checkout() {
     const location = useLocation();
 
     console.log(location.state)
+    const seatNumbers = location.state.ids.map((element) => location.state.seats.filter(obj => obj.id===element));
+    console.log(seatNumbers)
     return (
         <Container>
             <SucessMsg>Pedido feito com sucesso!</SucessMsg>
@@ -11,6 +13,7 @@ export default function Checkout() {
             <Info>{location.state.movie.title}</Info>
             <Info>{location.state.day.date} {location.state.name}</Info>
             <InfoHeader>Ingressos</InfoHeader>
+            {seatNumbers.map((obj,index) => <Info key={index} >Assento {obj[0].name}</Info>)}
             <InfoHeader>Comprador</InfoHeader>
             <Info>Nome: {location.state.userName}</Info>
             <Info>CPF: {location.state.cpf}</Info>
