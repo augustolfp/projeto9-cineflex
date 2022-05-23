@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 export default function Checkout() {
     const location = useLocation();
 
@@ -18,6 +18,7 @@ export default function Checkout() {
             <Info>Nome: {location.state.userName}</Info>
             <Info>CPF: {location.state.cpf}</Info>
         </Container>
+        <Link to={`/`}><Home>Voltar para Home</Home></Link>
         </>
     );
 }
@@ -53,4 +54,19 @@ const Info = styled.div`
     font-size: 22px;
     color: #293845;
     margin-bottom: 4px;
+`
+
+const Home = styled.button`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 12px 50px;
+    max-width: 300px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: white;
+    background-color: #E8833A;
+    border: none;
+    border-radius: 3px;
+    padding: 8px 12px;
 `
