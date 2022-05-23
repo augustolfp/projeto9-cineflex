@@ -1,6 +1,6 @@
 import Footer from "../Footer/Footer";
 import styled from "styled-components";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import React from "react";
 import axios from "axios";
 import SeatButton from "../SeatButton/SeatButton";
@@ -9,7 +9,7 @@ export default function SeatReservation(props) {
     const [seats, setSeats] = React.useState({});
     const [name, setName] = React.useState("");
     const [CPF, setCPF] = React.useState("");
-
+    const navigate = useNavigate();
     const {idSessao} = useParams();
 
     React.useEffect(() => {
@@ -20,7 +20,16 @@ export default function SeatReservation(props) {
 
     function submitForm(event) {
         event.preventDefault();
-        console.log(name)
+        const selectedSeats = seats.seats.filter(seat => seat.isSelected);
+        const reservation = {
+            ids: selectedSeats.map(seat => seat.id),
+            name: name,
+            cpf: CPF
+        }
+        const reserveRequest = axios.post('https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many', reservation);
+        reserveRequest.then(navigate('/sucesso'));
+        reserveRequest.catch(error => console.log("Erro" + error.response.status));
+        
     }
 
     function handleSeatClick(index) {

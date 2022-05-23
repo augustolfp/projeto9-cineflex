@@ -5,6 +5,7 @@ import "../assets/styles/reset.css";
 import Header from "./Header/Header";
 import MovieSessions from "./MovieSessions/MovieSessions";
 import SeatReservation from "../components/SeatReservation/SeatReservation";
+import Checkout from "./Checkout/Checkout";
 
 export default function App() {
     return(
@@ -16,6 +17,7 @@ export default function App() {
                     <Route path="/" element={<MovieCatalog />} />
                     <Route path="/sessoes/:idFilme" element={<MovieSessions />} />
                     <Route path="/assentos/:idSessao" element={<SeatReservation />} />
+                    <Route path="/sucesso" element={<Checkout />} />
                 </Routes>
             </BrowserRouter>
         </>
