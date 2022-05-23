@@ -40,7 +40,6 @@ export default function SeatReservation(props) {
             else {
                 setSeats(seats, seats.seats[index].isSelected = !seats.seats[index].isSelected);
             }
-            console.log(seats.seats)
         }
     }
 
@@ -71,16 +70,16 @@ export default function SeatReservation(props) {
                     </SeatGrid>
                 </Container>
 
-                <form onSubmit={submitForm}>
+                <Form onSubmit={submitForm}>
                     <label>Nome do comprador:</label>
                     <input type="text" id="userLegalName" placeholder="Digite seu nome..." onChange={ev => setName(ev.target.value)}/>
                     <label>CPF do comprador:</label>
                     <input type="text" id="CPF" placeholder="Digite seu CPF..." onChange={ev => setCPF(ev.target.value)} />
-                    <button type="submit">clica ai</button>
-                </form>
+                    <button type="submit">Reservar assento(s)</button>
+                </Form>
 
                 <Footer image={seats.movie.posterURL}>
-                    {seats.movie.title}
+                    {seats.movie.title}<br/>
                     {seats.day.weekday}
                     {seats.name}
                 </Footer>
@@ -103,10 +102,49 @@ const Title = styled.h2`
 `
 const SeatGrid = styled.div`
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
     max-width: 400px;
 `
 const Container = styled.div`
     display:flex;
+    width: 100%;
     justify-content:center;
+`
+
+const Form = styled.form`
+    display: flex;
+    flex-direction: column;
+    margin: 0 14px;
+
+    label {
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        color: #293845;
+        margin-bottom: 4px;
+    }
+
+    input {
+        font-family: 'Roboto', sans-serif;
+        font-size: 18px;
+        height: 50px;
+        border: 1px solid #D5D5D5;
+        border-radius: 3px;
+        margin-bottom: 12px;
+    }
+
+    button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 12px 50px;
+    max-width: 300px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    color: white;
+    background-color: #E8833A;
+    border: 1px solid #808F9D;
+    border-radius: 3px;
+    padding: 8px 12px;
+    }
 `

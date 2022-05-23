@@ -30,4 +30,5 @@ const Date = styled.h3`
 
 const ButtonContainer = styled.div`
     display: flex;
+    margin: 15px 0px;
 `

@@ -21,7 +21,7 @@ export default function MovieSessions() {
             <Title>
                 Selecione o horário
             </Title>
-            {sessions.days.map((obj,index) => <AvailableDay key={index} day={obj} />)}
+            <Container>{sessions.days.map((obj,index) => <AvailableDay key={index} day={obj} />)}</Container>
             <Footer image={sessions.posterURL}>
                 {sessions.title}
             </Footer>
@@ -39,4 +39,8 @@ const Title = styled.h2`
     color: #293845;
     text-align: center;
     margin: 30px 10px;
+`
+
+const Container = styled.div`
+    margin-left: 16px;
 `

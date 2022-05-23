@@ -16,6 +16,7 @@ const Container = styled.button`
     font-family: 'Roboto', sans-serif;
     font-size: 18px;
     color: white;
-    padding: 8px 20px;
+    padding: 8px 16px;
+    margin-right: 8px
 
 `
