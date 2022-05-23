@@ -1,8 +1,10 @@
 import styled from "styled-components";
+import React from "react";
 
-export default function SeatButton({id, name, isAvailable, click}) {
+export default function SeatButton({name, click, color}) {
+
     return(
-        <Seat onClick={click} color={isAvailable? "#C3CFD9" : "#FBE192"} >{name}</Seat>
+        <Seat onClick={click} cor={color}>{name}</Seat>
     );
 }
 
@@ -15,7 +17,7 @@ const Seat = styled.div`
     width: 26px;
     height: 26px;
     font-size: 11px;
-    background-color: ${props => props.color};
+    background-color: ${(props) => props.cor};
     border: 1px solid #808F9D;
     border-radius: 12px;
 `

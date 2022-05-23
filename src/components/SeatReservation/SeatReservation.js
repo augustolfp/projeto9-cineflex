@@ -11,11 +11,13 @@ export default function SeatReservation(props) {
     const [CPF, setCPF] = React.useState("");
 
     const {idSessao} = useParams();
+
     React.useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`);
         promise.then(response => setSeats(response.data));
         promise.catch(error => console.log("Erro" + error.response.status));
-    }, [])
+    }, []);
+
     function submitForm(event) {
         event.preventDefault();
         console.log(name)
@@ -23,9 +25,28 @@ export default function SeatReservation(props) {
 
     function handleSeatClick(index) {
         if(seats.seats[index].isAvailable) {
-            setSeats(seats, seats.seats[index].isSelected = true);
+            if(typeof seats.seats[index].isSelected === "undefined") {
+                setSeats(seats, seats.seats[index].isSelected = true);
+            }
+            else {
+                setSeats(seats, seats.seats[index].isSelected = !seats.seats[index].isSelected);
+            }
+            console.log(seats.seats)
         }
-        console.log(seats.seats)
+    }
+
+    function colorPicker(index) {
+        if(seats.seats[index].isAvailable) {
+            if(seats.seats[index].isSelected) {
+                return "green";
+            }
+            else {
+                return "#C3CFD9";
+            }
+        }
+        else {
+            return "yellow";
+        }
     }
 
     if(seats.movie) {
@@ -34,11 +55,13 @@ export default function SeatReservation(props) {
                 <Title>
                     Selecione o(s) assentos(s)
                 </Title>
+
                 <Container>
                     <SeatGrid>
-                        {seats.seats.map((seat,index) => <SeatButton {...seat} key={index} click={() => handleSeatClick(index)} />)}
+                        {seats.seats.map((seat,index) => <SeatButton name={seat.name} key={index} click={() => handleSeatClick(index)} color={() => colorPicker(index)} />)}
                     </SeatGrid>
                 </Container>
+
                 <form onSubmit={submitForm}>
                     <label>Nome do comprador:</label>
                     <input type="text" id="userLegalName" placeholder="Digite seu nome..." onChange={ev => setName(ev.target.value)}/>
@@ -46,6 +69,7 @@ export default function SeatReservation(props) {
                     <input type="text" id="CPF" placeholder="Digite seu CPF..." onChange={ev => setCPF(ev.target.value)} />
                     <button type="submit">clica ai</button>
                 </form>
+
                 <Footer image={seats.movie.posterURL}>
                     {seats.movie.title}
                     {seats.day.weekday}
